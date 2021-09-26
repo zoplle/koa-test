@@ -9,7 +9,6 @@ const logger = require('koa-logger')
 const index = require('./routes/index')
 const users = require('./routes/users')
 const log4js = require('./utils/log4j')
-var log = log4js.getLogger()
 // error handler
 onerror(app)
 
@@ -32,11 +31,8 @@ app.use(
 // logger
 app.use(async (ctx, next) => {
   // const start = new Date()
-  await next()
-  // const ms = new Date() - start
-  // console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-  log.level = 'debug'
-  log.debug('some bug message')
+  await next(
+  log4js.debug('12')
 })
 
 // routes
